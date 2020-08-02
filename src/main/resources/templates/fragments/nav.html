@@ -1,0 +1,67 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <div class="panel-body">
+        <!-- Branding Image -->
+        <div class="col-md-2">
+            <img src="/img/logo.png" alt="Logo"/>
+        </div>
+        <div class="col-md-4 text">
+            My Online Library
+        </div>
+        <div class="col-md-6 text">
+
+            <!-- Authentication Links -->
+
+            <a href="/allBooks" class="btn btn-large btn-primary">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                All books
+            </a>
+            <a href="/login" class="btn btn-large btn-primary ">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                Login
+            </a>
+            <a href="/register'" class="btn btn-large btn-primary">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                Register
+            </a>
+
+            <div class="dropdown">
+                <button class="btn btn-large btn-primary dropdown-toggle" type="button"
+                        data-toggle="dropdown">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                    Books
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu1">
+                    <li>
+                        <a href="/myBooks" class="btn btn-large btn-primary">
+                            My books
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/allBooks" class="btn btn-large btn-primary">
+                            All books
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn btn-large hidden-btn"></div>
+            <div class="dropdown">
+                <button class="btn btn-large btn-primary dropdown-toggle" data-toggle="dropdown">
+
+                    Name
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu1">
+                    <li>
+                        <a href="/logout'" class="btn btn-large btn-primary"
+                           onclick="preventDefault();
+                                        	document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</th:block>

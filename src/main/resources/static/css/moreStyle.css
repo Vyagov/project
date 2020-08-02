@@ -1,0 +1,45 @@
+a.dropdown-toggle {
+    width: 160px;
+}
+
+div.dropdown {
+    display: inline-block;
+}
+
+.dropdown-menu1 {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    padding: 3px 0;
+    list-style: none;
+    background-clip: padding-box;
+}
+
+.open > .dropdown-menu1 {
+    display: block;
+}
+
+.hidden-btn {
+    visibility: hidden;
+}
+
+.title {
+    margin-top: 5px;
+    font-weight: bold;
+    color: #009966;
+    line-height: 1.3em;
+}
+
+.author {
+    font-weight: bold;
+    line-height: 1.3em;
+    color: #006699;
+    font-style: italic;
+}
+
+.genre {
+    font-size: 0.8em;
+    font-weight: bold;
+}
