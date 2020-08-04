@@ -9,23 +9,17 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <th:block th:include="~{/fragments/nav}"></th:block>
-<!--                <th:block th:include="~{/auth/passwords/email}"></th:block>-->
-<!--                <th:block th:include="~{/auth/passwords/reset}"></th:block>-->
-<!--                <th:block th:include="~{/auth/login}"></th:block>-->
-<!--                <th:block th:include="~{/auth/register}"></th:block>-->
 <!--                <th:block th:include="~{/fragments/book/add-book}"></th:block>-->
 <!--                <th:block th:include="~{/fragments/book/all-books}"></th:block>-->
 <!--                <th:block th:include="~{/fragments/book/my-books}"></th:block>-->
-                <th:block th:include="~{/fragments/book/search-book}"></th:block>
+<!--                <th:block th:include="~{/fragments/book/search-book}"></th:block>-->
 
-
-                <!--                @yield('content')-->
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript" src="/webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
 
 </body>
 </html>
