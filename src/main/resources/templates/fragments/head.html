@@ -1,18 +1,21 @@
 <th:block xmlns:th="http://www.thymeleaf.org">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=""/>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content=""/>
 
-    <title>My Online Library</title>
+        <title th:text="${title}"></title>
 
-    <link th:href="@{https://fonts.googleapis.com/css?family=Raleway:100,600}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Raleway:100,600}">
 
-    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+        <script th:href="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+        <script th:href="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
 
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}">
 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/moreStyle.css}"/>
+        <link rel="stylesheet" th:href="@{/css/style.css}"/>
+        <link rel="stylesheet" th:href="@{/css/moreStyle.css}"/>
+    </head>
 </th:block>

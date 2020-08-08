@@ -7,7 +7,7 @@ import project.model.entity.Role;
 import project.model.entity.User;
 import project.repository.UserRepository;
 
-import java.util.List;
+import java.util.Set;
 
 @Component
 public class DateInit implements CommandLineRunner {
@@ -32,12 +32,12 @@ public class DateInit implements CommandLineRunner {
             admin.setPassword(this.passwordEncoder.encode("admin"));
 
             Role adminAdminRole = new Role();
-            adminAdminRole.setRole("ROLE_ADMIN");
+            adminAdminRole.setAuthority("ADMIN");
 
             Role adminUserRole = new Role();
-            adminUserRole.setRole("ROLE_USER");
+            adminUserRole.setAuthority("USER");
 
-            admin.setRoles(List.of(adminAdminRole, adminUserRole));
+            admin.setAuthorities(Set.of(adminAdminRole, adminUserRole));
 
             this.userRepository.saveAndFlush(admin);
 
@@ -50,9 +50,9 @@ public class DateInit implements CommandLineRunner {
             user.setPassword(this.passwordEncoder.encode("user"));
 
             Role userUserRole = new Role();
-            userUserRole.setRole("ROLE_USER");
+            userUserRole.setAuthority("USER");
 
-            user.setRoles(List.of(userUserRole));
+            user.setAuthorities(Set.of(userUserRole));
 
             this.userRepository.saveAndFlush(user);
         }
