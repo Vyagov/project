@@ -9,8 +9,12 @@ html, body {
     margin: 0;
 }
 
-.container {
+.container #first {
     padding-top: 5em;
+}
+
+.pad {
+    padding: 5px;
 }
 
 .text {
@@ -19,18 +23,22 @@ html, body {
     line-height: 1;
 }
 
-.panel-body > div, div.form-group {
-    padding: 15px 20px;
+.card > div, div.form-group {
+    padding: 10px 20px;
 }
 
 .btn-large {
     background-color: #006699;
-    width: 131px;
+    width: 170px;
     font-size: 20px;
 }
 
 .right {
     float: right;
+}
+
+.alert {
+    text-align: center;
 }
 
 img {
@@ -42,14 +50,14 @@ div.form-group > div:FIRST-CHILD {
     padding-bottom: 10px;
 }
 
-input[type=text], input[type=password], input[type=email], div.form-group textarea {
-    background-color: #eee;
+.form-control, .form-control:required, div.form-group textarea {
+    background-color: #eeeeee;
     color: #009966;
     font-size: 1.5em;
 }
 
 input[type=date] {
-    background-color: #eee;
+    background-color: #eeeeee;
     font-size: 1.5em;
 }
 
@@ -80,7 +88,7 @@ input[type=date] {
     color: #000;
 }
 
-.panel-heading {
+.card-header {
     text-align: center;
     font-size: 1.5em;
     color: #006699;
@@ -105,4 +113,9 @@ input[type=date] {
 .div-img {
     font-size: 1.3em;
     text-align: center;
+}
+
+footer {
+    background-color: #eeeeee;
+    color: #009966;
 }

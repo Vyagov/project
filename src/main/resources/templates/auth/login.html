@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <th:block th:include="~{/fragments/head}"></th:block>
 
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" th:method="post" th:action="@{/users/login/authenticate}">
-                        <small th:if="${error}" class="alert alert-danger center-block text-center h5" role="alert">
-                            <strong>Incorrect username or password!</strong>
-                        </small>
-                        <div class="form-group">
-                            <label for="username" class="col-md-4 control-label">Username</label>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card pad">
+                <th:block th:include="~{/fragments/nav}"></th:block>
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form role="form" th:method="post" th:action="@{/users/login/authenticate}">
+                        <small th:if="${error}" class="alert alert-danger h5 row" role="alert">
+                            <strong class="text-center">Incorrect username or password!</strong>
 
-                            <div class="col-md-6">
+                        </small>
+                        <div class="form-group row">
+                            <label for="username" class="col-4 col-form-label">Username</label>
+                            <div class="col-6">
                                 <input id="username" type="text" class="form-control" name="username"
                                        th:value="${username}" required autofocus>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                <span class="help-block">
-                        <strong></strong>
-                    </span>
+                        <div class="form-group row">
+                            <label for="password" class="col-4 col-form-label">Password</label>
+                            <div class="col-6">
+                                <input id="password" type="password" class="form-control" name="password"
+                                       required>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
+                        <div class="form-group row">
+                            <div class="col-8 offset-4">
+                                <button type="submit" class="btn btn-primary">Login</button>
                                 <a class="btn btn-link" href="#">
+
                                     Forgot Your Password?
+
                                 </a>
                             </div>
                         </div>
@@ -52,5 +45,6 @@
         </div>
     </div>
 </div>
+<th:block th:include="~{/fragments/js-files}"></th:block>
 </body>
 </html>

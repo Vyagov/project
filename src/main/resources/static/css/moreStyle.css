@@ -1,9 +1,6 @@
-a.dropdown-toggle {
-    width: 160px;
-}
-
-div.dropdown {
+.dropdown {
     display: inline-block;
+    width: 170px;
 }
 
 .dropdown-menu1 {
@@ -12,13 +9,33 @@ div.dropdown {
     left: 0;
     z-index: 1000;
     display: none;
-    padding: 3px 0;
+    float: left;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: center;
     list-style: none;
+    background-color: transparent;
     background-clip: padding-box;
+    border: none;
+    border-radius: 0;
 }
 
-.open > .dropdown-menu1 {
-    display: block;
+.dropdown-menu1 a, .dropdown-menu > form > button {
+    padding: 5px 0;
+    margin: 5px 0;
+    color: white;
+}
+
+.dropdown-menu1 a:hover, .dropdown-menu > form > button:hover {
+    background-color: #006699;
+    color: white;
+}
+
+.dropdown-item {
+    padding: 0;
 }
 
 .hidden-btn {
@@ -32,11 +49,14 @@ div.dropdown {
     line-height: 1.3em;
 }
 
-.author {
+label {
+    margin: 10px;
+    padding-top: 10px;
     font-weight: bold;
     line-height: 1.3em;
     color: #006699;
     font-style: italic;
+    text-align: right;
 }
 
 .genre {

@@ -1,71 +1,92 @@
-<th:block xmlns:th="http://www.thymeleaf.org"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+<th:block xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemalocation="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
           xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-    <div class="panel-body">
+    <div class="row">
         <!-- Branding Image -->
-        <div class="col-md-2">
-            <a th:href="@{/home}">
-                <img th:src="@{/img/logo.png}" alt="Logo"/>
-            </a>
-        </div>
-        <div class="col-md-4 text">
-            My Online Library
-        </div>
-        <div class="col-md-6 text">
+        <div class="col-2"><a th:href="@{/home}">
 
+            <img th:src="@{/img/logo.png}" alt="Logo" src="">
+
+        </a>
+        </div>
+        <div class="col-3 text">My Online Library</div>
+        <div class="col-7 text">
             <!-- Authentication Links -->
             <th:block sec:authorize="isAnonymous()">
                 <a th:href="@{/allBooks}" class="btn btn-large btn-primary">
+
                     <i class="fa fa-book" aria-hidden="true"></i>
+
                     All books
+
                 </a>
-                <a th:href="@{/users/login}" class="btn btn-large btn-primary ">
+                <a th:href="@{/users/login}" class="btn btn-large btn-primary">
+
                     <i class="fa fa-sign-in" aria-hidden="true"></i>
+
                     Login
+
                 </a>
                 <a th:href="@{/users/register}" class="btn btn-large btn-primary">
+
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
                     Register
+
                 </a>
             </th:block>
-            <th:block sec:authorize="hasAnyAuthority('ADMIN', 'USER')">
+            <th:block sec:authorize="hasAnyAuthority(&apos;ADMIN&apos;, &apos;USER&apos;)">
                 <div class="dropdown">
-                    <button class="btn btn-large btn-primary dropdown-toggle" type="button"
-                            data-toggle="dropdown">
+                    <button class="btn btn-large btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-book" aria-hidden="true"></i>
-                        Books
-                        <span class="caret"></span>
+                        Books <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu1">
-                        <li>
-                            <a th:href="@{/myBooks}" class="btn btn-large btn-primary">
-                                My books
-                            </a>
-                        </li>
-                        <li>
-                            <a th:href="@{/allBooks}" class="btn btn-large btn-primary">
-                                All books
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="btn btn-large hidden-btn"></div>
-                <div class="dropdown">
-                    <button class="btn btn-large btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <div class="dropdown-menu dropdown-menu1" aria-labelledby="dropdownMenuButton">
+                        <a th:href="@{/myBooks}" class="btn btn-large btn-primary dropdown-item">
 
-                        <span th:text="${#authentication.name}" th:remove="tag">user</span>
+                            My books
+
+                        </a>
+                        <a th:href="@{/allBooks}" class="btn btn-large btn-primary dropdown-item">
+
+                            All books
+
+                        </a>
+                    </div>
+                </div>
+                <div sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown">
+                    <button class="btn btn-large btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Administration
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu1">
-                        <li>
-                            <a th:href="@{/logout}" class="btn btn-large btn-primary"
-                               onclick="preventDefault();
-                                        	document.getElementById('logout').submit();">
+                    <div class="dropdown-menu dropdown-menu1" aria-labelledby="dropdownMenuButton">
+                        <a th:href="@{/admin/user/edit-roles}" class="btn btn-large btn-primary dropdown-item">
+
+                            Edit user roles
+
+                        </a>
+                        <a th:href="@{/admin/user/all}" class="btn btn-large btn-primary dropdown-item">
+
+                            Edit user
+
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-large btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><span
+                            th:text="${#authentication.name}" th:remove="tag">user</span>
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu1">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn btn-large btn-primary dropdown-item">
                                 Logout
-                            </a>
-                        </li>
-                    </ul>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </th:block>
         </div>

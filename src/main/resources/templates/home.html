@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="~{/fragments/head}"></th:block>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <th:block th:include="~{/fragments/nav}"></th:block>
-                <!--                <th:block th:include="~{/fragments/book/add-book}"></th:block>-->
-                <!--                <th:block th:include="~{/fragments/book/all-books}"></th:block>-->
-                <!--                <th:block th:include="~{/fragments/book/my-books}"></th:block>-->
-                <!--                <th:block th:include="~{/fragments/book/search-book}"></th:block>-->
 
+<body>
+<div class="container" id="first">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card pad">
+                <th:block th:include="~{/fragments/nav}"></th:block>
+                <th:block th:include="~{/fragments/welcome}"></th:block>
+
+                <!-- <th:block th:include="~{/fragments/book/add-book}"></th:block>-->
+                <!-- <th:block th:include="~{/fragments/book/all-books}"></th:block>-->
+                <!-- <th:block th:include="~{/fragments/book/my-books}"></th:block>-->
+                <!-- <th:block th:include="~{/fragments/book/search-book}"></th:block>-->
+                <th:block th:include="~{/fragments/footer}"></th:block>
             </div>
         </div>
     </div>
 </div>
+<th:block th:include="~{/fragments/js-files}"></th:block>
 </body>
 </html>

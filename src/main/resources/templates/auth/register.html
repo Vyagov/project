@@ -1,83 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <th:block th:include="~{/fragments/head}"></th:block>
 </head>
+
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" th:object="${userRegisterBindingModel}" method="post"
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card pad">
+                <th:block th:include="~{/fragments/nav}"></th:block>
+                <div class="card-header">Register</div>
+                <div class="card-body">
+                    <form role="form" th:object="${userRegisterBindingModel}" method="post"
                           th:action="@{/users/register}">
-                        <div class="form-group">
-                            <label for="firstName" class="col-md-4 control-label">First Name</label>
-
-                            <div class="col-md-6">
-                                <input th:field="*{firstName}" th:errorclass="bg-danger" id="firstName" type="text" class="form-control" name="firstName"
-                                       value="first name" autofocus>
-                                <small th:each="err : ${#fields.errors('firstName')}" th:text="${err}"
+                        <div class="form-group row">
+                            <label for="firstName" class="col-lg-4 col-form-label">First Name</label>
+                            <div class="col-lg-6">
+                                <input th:field="*{firstName}" th:errorclass="bg-danger" id="firstName"
+                                       type="text" class="form-control" name="firstName" value="first name" autofocus>
+                                <small th:each="err : ${#fields.errors(&apos;firstName&apos;)}" th:text="${err}"
                                        class="text-danger h5"></small>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="lastName" class="col-md-4 control-label">Last Name</label>
-
-                            <div class="col-md-6">
-                                <input th:field="*{lastName}" th:errorclass="bg-danger" id="lastName" type="text" class="form-control" name="lastName" value="last name"
-                                       autofocus>
-                                <small th:each="err : ${#fields.errors('lastName')}" th:text="${err}"
+                        <div class="form-group row">
+                            <label for="lastName" class="col-lg-4 col-form-label">Last Name</label>
+                            <div class="col-lg-6">
+                                <input th:field="*{lastName}" th:errorclass="bg-danger" id="lastName"
+                                       type="text" class="form-control" name="lastName" value="last name" autofocus>
+                                <small th:each="err : ${#fields.errors(&apos;lastName&apos;)}" th:text="${err}"
                                        class="text-danger h5"></small>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input th:field="*{email}" th:errorclass="bg-danger" id="email" type="email" class="form-control" name="email" value="email">
-                                <small th:each="err : ${#fields.errors('email')}" th:text="${err}"
-                                       class="text-danger h5"></small>
+                        <div class="form-group row">
+                            <label for="email" class="col-lg-4 col-form-label">E-Mail Address</label>
+                            <div class="col-lg-6">
+                                <input th:field="*{email}" th:errorclass="bg-danger" id="email" type="email"
+                                       class="form-control" name="email" value="email"> <small
+                                    th:each="err : ${#fields.errors(&apos;email&apos;)}" th:text="${err}"
+                                    class="text-danger h5"></small>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="username" class="col-md-4 control-label">Username</label>
-
-                            <div class="col-md-6">
-                                <input th:field="*{username}" th:errorclass="bg-danger" id="username" type="text" class="form-control" name="username" value="username">
-                                <small th:each="err : ${#fields.errors('username')}" th:text="${err}"
-                                       class="text-danger h5"></small>
+                        <div class="form-group row">
+                            <label for="username" class="col-lg-4 col-form-label">Username</label>
+                            <div class="col-lg-6">
+                                <input th:field="*{username}" th:errorclass="bg-danger" id="username"
+                                       type="text" class="form-control" name="username" value="username"> <small
+                                    th:each="err : ${#fields.errors(&apos;username&apos;)}" th:text="${err}"
+                                    class="text-danger h5"></small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-lg-4 col-form-label">Password</label>
+                            <div class="col-lg-6">
+                                <input th:field="*{password}" th:errorclass="bg-danger" id="password"
+                                       type="password" class="form-control" name="password"> <small
+                                    th:each="err : ${#fields.errors(&apos;password&apos;)}" th:text="${err}"
+                                    class="text-danger h5"></small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="confirmPassword" class="col-lg-4 col-form-label">Confirm Password</label>
+                            <div class="col-lg-6">
+                                <input th:field="*{confirmPassword}" th:errorclass="bg-danger" id="confirmPassword"
+                                       type="password" class="form-control" name="confirmPassword"> <small
+                                    th:each="err : ${#fields.errors(&apos;confirmPassword&apos;)}"
+                                    th:text="${err}" class="text-danger h5"></small>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input th:field="*{password}" th:errorclass="bg-danger" id="password" type="password" class="form-control" name="password">
-                                <small th:each="err : ${#fields.errors('password')}" th:text="${err}"
-                                       class="text-danger h5"></small>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="confirmPassword" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input th:field="*{confirmPassword}" th:errorclass="bg-danger" id="confirmPassword" type="password" class="form-control" name="confirmPassword">
-                                <small th:each="err : ${#fields.errors('confirmPassword')}" th:text="${err}"
-                                       class="text-danger h5"></small>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
+                            <div class="col-lg-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">Register</button>
                             </div>
                         </div>
                     </form>
@@ -86,5 +80,6 @@
         </div>
     </div>
 </div>
+<th:block th:include="~{/fragments/js-files}"></th:block>
 </body>
 </html>
