@@ -35,7 +35,7 @@
 
                 </a>
             </th:block>
-            <th:block sec:authorize="hasAnyAuthority(&apos;ADMIN&apos;, &apos;USER&apos;)">
+            <th:block sec:authorize="hasAnyAuthority('MAIN_ADMIN', &apos;ADMIN&apos;, &apos;USER&apos;)">
                 <div class="dropdown">
                     <button class="btn btn-large btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -55,21 +55,21 @@
                         </a>
                     </div>
                 </div>
-                <div sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown">
+                <div sec:authorize="hasAnyAuthority('MAIN_ADMIN', 'ADMIN')" class="dropdown">
                     <button class="btn btn-large btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                         Administration
                         <span class="caret"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu1" aria-labelledby="dropdownMenuButton">
-                        <a th:href="@{/admin/user/edit-roles}" class="btn btn-large btn-primary dropdown-item">
+<!--                        <a th:href="@{/admin/user/edit-roles}" class="btn btn-large btn-primary dropdown-item">-->
 
-                            Edit user roles
+<!--                            Edit user roles-->
 
-                        </a>
+<!--                        </a>-->
                         <a th:href="@{/admin/user/all}" class="btn btn-large btn-primary dropdown-item">
 
-                            Edit user
+                            All Users
 
                         </a>
                     </div>

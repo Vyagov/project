@@ -42,6 +42,14 @@
     visibility: hidden;
 }
 
+.user-role-tag {
+    background-color: #006699;
+    color: white;
+    margin: 6px;
+    padding: 6px;
+    border-radius: 6px;
+}
+
 .title {
     margin-top: 5px;
     font-weight: bold;

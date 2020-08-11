@@ -36,8 +36,9 @@
                         <div class="form-group row">
                             <label for="email" class="col-lg-4 col-form-label">E-Mail Address</label>
                             <div class="col-lg-6">
-                                <input th:field="*{email}" th:errorclass="bg-danger" id="email" type="email"
-                                       class="form-control" name="email" value="email"> <small
+                                <input th:field="*{email}" th:errorclass="bg-danger" id="email" type="text"
+                                       class="form-control" name="email" value="email">
+                                <small
                                     th:each="err : ${#fields.errors(&apos;email&apos;)}" th:text="${err}"
                                     class="text-danger h5"></small>
                             </div>
