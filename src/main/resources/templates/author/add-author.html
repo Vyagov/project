@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card pad">
+                <th:block th:include="~{/fragments/nav}"></th:block>
+                <div class="card-header">Create Author</div>
+                <div class="card-body">
+                    <form role="form" th:object="${authorBindingModel}" th:method="post" th:action="@{/authors/add}">
+                        <div class="form-group row">
+                            <label for="name" class="col-lg-4 col-form-label">Name</label>
+                            <div class="col-lg-6">
+                                <input th:field="*{name}" th:errorclass="bg-danger" id="name"
+                                       type="text" class="form-control" name="name" value="name" autofocus>
+                                <small th:each="err : ${#fields.errors('name')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="biography" class="col-lg-4 col-form-label">Biography</label>
+                            <div class="col-lg-6">
+                                <textarea th:field="*{biography}" th:errorclass="bg-danger" id="biography"
+                                          rows="5" class="form-control" style="resize: vertical" name="resume"
+                                          placeholder="Biography" value="biography" autofocus></textarea>
+                                <small th:each="err : ${#fields.errors('biography')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:include="~{/fragments/js-files}"></th:block>
+</body>
+</html>
