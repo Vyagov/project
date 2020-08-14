@@ -13,8 +13,8 @@ public class AuthorBindingModel {
     }
 
     @NotNull
-    @Length(min = 2, max = 70, message = "Name length must be between 2 and 35 characters!")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s+,.!\"-_\\p{IsCyrillic}]+$", message = "Is not a text!")
+    @Length(min = 2, max = 70, message = "Name length must be between 2 and 35 characters! ")
+    @Pattern(regexp = "^[a-zA-Z0-9\\s+,.!'\"-_\\p{IsCyrillic}]+$", message = "Is not a text!")
     public String getName() {
         return name;
     }
@@ -24,7 +24,7 @@ public class AuthorBindingModel {
     }
 
     @NotNull
-    @Length(min = 10, message = "Biography length must be more than 10 characters!")
+    @Length(min = 10, message = "Biography length must be more than 10 characters! ")
     @Pattern(regexp = "^[a-zA-Z0-9\\s+,.!\"-_\\p{IsCyrillic}]+$", message = "Is not a text!")
     public String getBiography() {
         return biography;

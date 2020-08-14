@@ -46,10 +46,6 @@ img {
     width: 100px;
 }
 
-div.form-group > div:FIRST-CHILD {
-    padding-bottom: 10px;
-}
-
 .form-control, .form-control:required, div.form-group textarea {
     background-color: #eeeeee;
     color: #009966;
@@ -61,12 +57,20 @@ input[type=date] {
     font-size: 1.5em;
 }
 
+select.form-control:not([size]):not([multiple]) {
+    height: 50px!important;
+}
+
 .fileContainer {
     overflow: hidden;
     position: relative;
-    color: #006699;
     width: 190px;
     font-size: 20px;
+    background-color: #006699;
+}
+
+.fileContainer:hover {
+    background-color: #0069d9;
 }
 
 .fileContainer [type=file] {

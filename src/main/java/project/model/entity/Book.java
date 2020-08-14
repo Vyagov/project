@@ -12,10 +12,10 @@ public class Book extends BaseEntity {
     private String bookTitle;
     private String genre;
     private Integer pageCount;
-    private String resume;
+    private String summary;
     private LocalDate issueDate;
     private String isbn;    /*International Standard Book Number (ISBN)*/
-    private byte[] image;
+    private String pathToImage;
     private Author author;
 
     public Book() {
@@ -48,16 +48,16 @@ public class Book extends BaseEntity {
         this.pageCount = pageCount;
     }
 
-    @Column(name = "resume", columnDefinition = "TEXT", nullable = false)
-    public String getResume() {
-        return resume;
+    @Column(name = "summary", columnDefinition = "TEXT", nullable = false)
+    public String getSummary() {
+        return summary;
     }
 
-    public void setResume(String resume) {
-        this.resume = resume;
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
-    @Column(name = "ussue_data", nullable = false)
+    @Column(name = "issue_data", nullable = false)
     public LocalDate getIssueDate() {
         return issueDate;
     }
@@ -75,14 +75,13 @@ public class Book extends BaseEntity {
         this.isbn = isbn;
     }
 
-    @Lob
-    @Column(name="image", nullable=false, columnDefinition="mediumblob")
-    public byte[] getImage() {
-        return image;
+    @Column(name="path_to_image", nullable=false)
+    public String getPathToImage() {
+        return pathToImage;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void setPathToImage(String pathToImage) {
+        this.pathToImage = pathToImage;
     }
 
     @ManyToOne(cascade = ALL, fetch = EAGER)

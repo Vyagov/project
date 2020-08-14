@@ -1,8 +1,8 @@
 package project.model.view;
 
-import project.model.entity.Role;
+import project.model.service.RoleServiceModel;
 
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public class UserViewModel extends BaseViewModel {
@@ -10,9 +10,9 @@ public class UserViewModel extends BaseViewModel {
     private String lastName;
     private String username;
     private String password;
-    private String confirmPassword;
     private String email;
-    private Set<Role> authorities;
+    private Set<RoleServiceModel> authorities;
+    private List<BookViewModel> books;
 
     public UserViewModel() {
     }
@@ -49,14 +49,6 @@ public class UserViewModel extends BaseViewModel {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -65,11 +57,19 @@ public class UserViewModel extends BaseViewModel {
         this.email = email;
     }
 
-    public Set<Role> getAuthorities() {
+    public Set<RoleServiceModel> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<Role> authorities) {
+    public void setAuthorities(Set<RoleServiceModel> authorities) {
         this.authorities = authorities;
+    }
+
+    public List<BookViewModel> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BookViewModel> books) {
+        this.books = books;
     }
 }

@@ -1,5 +1,6 @@
 package project.service;
 
+import project.model.entity.Author;
 import project.model.service.AuthorServiceModel;
 import project.model.view.AuthorViewModel;
 
@@ -14,4 +15,6 @@ public interface AuthorService {
     AuthorViewModel findById(String id);
 
     void delete(String id);
+
+    Author findByName(String name);
 }

@@ -1,6 +1,6 @@
 package project.model.view;
 
-public class BaseViewModel {
+public abstract class BaseViewModel {
     private String id;
 
     public BaseViewModel() {

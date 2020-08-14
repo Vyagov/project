@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<th:block th:include="~{/fragments/head}"></th:block>
+<th:block th:include="~{/fragments/head}">
+</th:block>
 
 <body>
 <div class="container" id="first">
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card pad">
-                <th:block th:include="~{/fragments/nav}"></th:block>
-                <th:block th:include="~{/fragments/welcome}"></th:block>
+                <th:block th:include="~{/fragments/nav}">
+                </th:block>
+                <th:block sec:authorize="isAnonymous()">
+                    <th:block th:include="~{/fragments/welcome}">
+                    </th:block>
+                </th:block>
+                <th:block sec:authorize="hasAnyAuthority('MAIN_ADMIN', 'ADMIN', 'USER')">
+                    <div class="card-header">List of books</div>
+                    <div class="card-block">
+                        <form class="form-inline" role="search" th:method="post" th:action="@{/books/search}">
+                            <div class="form-group">
+                                <label class="searchBook" for="searchBook">Search book</label>
+                                <input id="searchBook" type="text" class="form-control mx-sm-3" name="searchBook"
+                                       placeholder="Search book">
+                                <button type="submit" class="btn btn-large btn-primary">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </th:block>
 
-                <!-- <th:block th:include="~{/fragments/book/add-book}"></th:block>-->
                 <!-- <th:block th:include="~{/fragments/book/all-books}"></th:block>-->
                 <!-- <th:block th:include="~{/fragments/book/my-books}"></th:block>-->
                 <!-- <th:block th:include="~{/fragments/book/search-book}"></th:block>-->
-                <th:block th:include="~{/fragments/footer}"></th:block>
+                <th:block th:include="~{/fragments/footer}">
+                </th:block>
             </div>
         </div>
     </div>
 </div>
-<th:block th:include="~{/fragments/js-files}"></th:block>
+<th:block th:include="~{/fragments/js-files}">
+</th:block>
 </body>
 </html>

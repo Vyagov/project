@@ -14,9 +14,7 @@ import project.model.entity.User;
 import project.model.service.RoleServiceModel;
 import project.model.service.UserServiceModel;
 import project.model.view.UserViewModel;
-import project.repository.RoleRepository;
 import project.repository.UserRepository;
-import project.service.RoleService;
 import project.service.UserService;
 
 import java.util.*;
@@ -27,20 +25,16 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-    private final RoleService roleService;
     private final Tools tools;
-    private RoleRepository roleRepository;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder,
                            ModelMapper modelMapper,
-                           RoleService roleService,
                            Tools tools) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-        this.roleService = roleService;
         this.tools = tools;
     }
 
@@ -67,11 +61,11 @@ public class UserServiceImpl implements UserService {
             Role adminRole = new Role("ADMIN");
             Role userRole = new Role("USER");
 
-            user.setAuthorities(List.of(mainAdmin, adminRole, userRole));
+            user.setAuthorities(Set.of(mainAdmin, adminRole, userRole));
         } else {
             Role userRole = new Role("USER");
 
-            user.setAuthorities(List.of(userRole));
+            user.setAuthorities(Set.of(userRole));
         }
         user.setPassword(this.passwordEncoder.encode(user.getPassword()));
 
@@ -110,7 +104,7 @@ public class UserServiceImpl implements UserService {
             throw new UserIsNotExistException(username);
         }
         return user.getAuthorities().stream()
-                .map(r -> this.modelMapper.map(r, RoleServiceModel.class))
+                .map(role -> this.modelMapper.map(role, RoleServiceModel.class))
                 .collect(Collectors.toList());
     }
 

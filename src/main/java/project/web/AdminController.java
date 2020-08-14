@@ -42,8 +42,6 @@ public class AdminController {
     public String getAllUsers(Model model) {
         List<UserViewModel> allUsers = this.userService.getAllUsersForView();
 
-        allUsers.sort(Comparator.comparing(UserViewModel::getUsername));
-
         model.addAttribute("allUsers", allUsers);
 
         return "admin/all-users";

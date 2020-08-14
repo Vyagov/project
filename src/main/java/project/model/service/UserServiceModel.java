@@ -1,8 +1,6 @@
 package project.model.service;
 
-import project.model.entity.Role;
-
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public class UserServiceModel extends BaseServiceModel {
@@ -12,7 +10,8 @@ public class UserServiceModel extends BaseServiceModel {
     private String password;
     private String confirmPassword;
     private String email;
-    private Set<Role> authorities;
+    private Set<RoleServiceModel> authorities;
+    private List<BookServiceModel> books;
 
     public UserServiceModel() {
     }
@@ -65,11 +64,19 @@ public class UserServiceModel extends BaseServiceModel {
         this.confirmPassword = confirmPassword;
     }
 
-    public Set<Role> getAuthorities() {
+    public Set<RoleServiceModel> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<Role> authorities) {
+    public void setAuthorities(Set<RoleServiceModel> authorities) {
         this.authorities = authorities;
+    }
+
+    public List<BookServiceModel> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BookServiceModel> books) {
+        this.books = books;
     }
 }

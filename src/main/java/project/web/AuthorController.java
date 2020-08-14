@@ -53,7 +53,7 @@ public class AuthorController {
         }
         this.authorService.addAuthor(this.modelMapper.map(authorBindingModel, AuthorServiceModel.class));
 
-        return "redirect:/home";
+        return "redirect:/books/add";
     }
 
     @Title(name = "Author Details")

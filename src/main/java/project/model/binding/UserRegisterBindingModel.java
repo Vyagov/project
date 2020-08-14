@@ -18,7 +18,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    @Length(min = 2, max = 35, message = "Name length must be between 2 and 35 characters!")
+    @Length(min = 2, max = 35, message = "Name length must be between 2 and 35 characters! ")
     @Pattern(regexp = "^[a-zA-Z\\p{IsCyrillic}]+$", message = "Name must be only letters!")
     public String getFirstName() {
         return firstName;
@@ -29,7 +29,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    @Length(min = 2, max = 35, message = "Name length must be between 2 and 35 characters!")
+    @Length(min = 2, max = 35, message = "Name length must be between 2 and 35 characters! ")
     @Pattern(regexp = "^[a-zA-Z\\p{IsCyrillic}]+$", message = "Name must be only letters!")
     public String getLastName() {
         return lastName;
@@ -40,7 +40,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    @Length(min = 3, max = 20, message = "Username length must be between 3 and 20 characters!")
+    @Length(min = 3, max = 20, message = "Username length must be between 3 and 20 characters! ")
     @Pattern(regexp = "^[a-zA-Z0-9\\s+,.!\"-_]+$", message = "Username is not valid!")
     public String getUsername() {
         return username;
@@ -51,7 +51,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    @Email(message = "Enter valid email!")
+    @Email(message = "Enter valid email! ")
     @Length(min = 3, message = "Email cannot be empty!")
     public String getEmail() {
         return email;

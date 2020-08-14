@@ -50,6 +50,13 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorRepository.deleteById(id);
     }
 
+    @Override
+    public Author findByName(String name) {
+        return this.authorRepository
+                .findByName(name)
+                .orElse(null);
+    }
+
     private AuthorViewModel authorToView(Author author) {
         return this.modelMapper.map(author, AuthorViewModel.class);
     }

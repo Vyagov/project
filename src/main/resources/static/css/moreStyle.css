@@ -67,6 +67,11 @@ label {
     text-align: right;
 }
 
+.searchBook {
+    margin: 0;
+    padding-top: 0;
+}
+
 .genre {
     font-size: 0.8em;
     font-weight: bold;

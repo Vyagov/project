@@ -1,109 +1,126 @@
-<th:block xmlns:th="http://www.thymeleaf.org">
-    <div class="panel-body">
-        <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST"
-              action="add-book">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="has-error">
-                            <input id="book_title" type="text" class="form-control" name="book_title"
-                                   value="book_title" placeholder="Book title">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-                            <span class="help-block">
-                                <strong></strong>
-                            </span>
+<head>
+    <th:block th:include="~{/fragments/head}">
+    </th:block>
+</head>
+
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card pad">
+                <th:block th:include="~{/fragments/nav}">
+                </th:block>
+                <div class="card-header">Create Book</div>
+                <div class="card-block">
+                    <form role="form" enctype="multipart/form-data" th:object="${bookBindingModel}" th:method="post"
+                          th:action="@{/books/add}">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="bookTitle">Book Title</label>
+                                <input th:field="*{bookTitle}" th:errorclass="bg-danger" id="bookTitle"
+                                       type="text" class="form-control" name="bookTitle"
+                                       value="bookTitle" autofocus>
+                                <small th:each="err : ${#fields.errors('bookTitle')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="author">Author</label>
+                                <select th:field="*{author}" th:errorclass="bg-danger" id="author"
+                                        class="form-control" name="author">
+                                    <option value="">Choose...</option>
+                                    <option th:each="author : ${authors}"
+                                            th:text="${#strings.capitalize(#strings.toLowerCase(author.name))}"
+                                            th:value="${author.name}"></option>
+                                </select>
+                                <small th:each="err : ${#fields.errors('author')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="createAuthor" class="hidden-btn">Create Author</label>
+                                <a th:href="@{/authors/add}" id="createAuthor"
+                                   class="btn btn-large btn-primary">Create Author</a>
+                            </div>
                         </div>
-                        <div class="has-error">
-                            <input id="author" type="text" class="form-control" name="author"
-                                   value="author" placeholder="Author">
-
-                            <span class="help-block">
-                                <strong></strong>
-                            </span>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="isbn">ISBN</label>
+                                <input th:field="*{isbn}" th:errorclass="bg-danger" id="isbn" type="text"
+                                       class="form-control" name="isbn" value="isbn">
+                                <small th:each="err : ${#fields.errors('isbn')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="genre">Genre</label>
+                                <select th:field="*{genre}" th:errorclass="bg-danger"
+                                        class="form-control" id="genre" name="genre">
+                                    <option value="">Choose...</option>
+                                    <option th:each="genre : ${T(project.model.enums.GenreName).values()}"
+                                            th:text="${#strings.capitalize(#strings.toLowerCase(genre))}"
+                                            th:value="${genre}"></option>
+                                </select>
+                                <small th:each="err : ${#fields.errors('genre')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="pageCount">Number of pages</label>
+                                <input th:field="*{pageCount}" th:errorclass="bg-danger" id="pageCount"
+                                       type="text" class="form-control" name="pageCount" value="pageCount">
+                                <small th:each="err : ${#fields.errors('pageCount')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="has-error">
-                            <input id="page_count" type="text" class="form-control" name="page_count"
-                                   value="page_count" placeholder="Page count">
-
-                            <span class="help-block">
-                                <strong></strong>
-                            </span>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="issueDate">Issue Date</label>
+                                <input th:field="*{issueDate}" th:errorclass="bg-danger" id="issueDate"
+                                       type="date" class="form-control" name="issueDate" value="issueDate">
+                                <small th:each="err : ${#fields.errors('issueDate')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="summary">Summary</label>
+                                <textarea th:field="*{summary}" th:errorclass="bg-danger" id="summary" rows="2"
+                                          class="form-control" style="resize: vertical" name="summary"
+                                          placeholder="Write a summary" value="resume"></textarea>
+                                <small th:each="err : ${#fields.errors('summary')}" th:text="${err}"
+                                       class="text-danger h5"></small>
+                            </div>
                         </div>
-                        <div class="has-error">
-                            <input id="isbn" type="text" class="form-control" name="isbn" value="isbn"
-                                   placeholder="ISBN">
-
-                            <span class="help-block">
-                                <strong></strong>
-                            </span>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <button class="btn btn-secondary fileContainer" aria-hidden="true">
+                                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                    <input class="myFile" id="myInput" type="file" name="image"/>
+                                    <span id="result">Upload...</span>
+                                </button>
+                                <small th:each="err : ${#fields.errors('image')}" th:text="${err}"
+                                       path="fileError" class="text-danger h5"></small>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-large btn-primary right">
+                                    Submit
+                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="has-error">
-                            <input id="genre" type="text" class="form-control" name="genre" value="genre"
-                                   placeholder="Genre">
-
-                            <span class="help-block">
-                                <strong></strong>
-                            </span>
-                        </div>
-                        <div class="has-error">
-                            <input id="issue_date" type="date" class="form-control" name="issue_date"
-                                   value="issue_date">
-
-                            <span class="help-block">
-                                <strong></strong>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="has-error">
-                            <textarea id="resume" rows="2" class="form-control" style="resize: vertical" name="resume"
-                                      placeholder="Resume" value="resume"></textarea>
-
-                            <span class="help-block">
-                                <strong></strong>
-                            </span>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="form-group">
-                    <div class="col-md-6 has-error">
-                        <button class="btn btn-default fileContainer" aria-hidden="true">
-                            <i class="fa fa-picture-o" aria-hidden="true"></i>
-                            Upload...
-                            <input type="file" name="image"/>
-                        </button>
-                        <span class="help-block">
-                            <strong></strong>
-                        </span>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-large btn-primary right">
-                            Submit
-                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
-    <div style="border: 2px solid grey"></div>
-    <div class="row panel-body">
-        <form class="navbar-form navbar-right" role="search" method="POST" action="fragments/search-book">
-            <div class="form-group">
-                <input type="text" class="form-control" name="searchBook" placeholder="Search book"
-                       value="">
-            </div>
-            <button type="submit" style="margin-right: 20px" class="btn btn-large btn-primary">Search</button>
-        </form>
-    </div>
+</div>
+<th:block th:include="~{/fragments/js-files}">
 </th:block>
+<script>
+    document.getElementById('result').textContent = 'Upload...';
+
+    document.querySelector('.fileContainer').addEventListener('click', function (e) {
+        document.querySelector('.myFile').addEventListener('change', function (e) {
+            document.getElementById('result').textContent = document.getElementById("myInput").files[0].name;
+        })
+    });
+</script>
+</body>
