@@ -12,14 +12,11 @@ import project.error.CustomBaseException;
 import project.error.UserIsNotExistException;
 import project.model.binding.NewRolesBindingModel;
 import project.model.service.NewRolesServiceModel;
-import project.model.service.RoleServiceModel;
 import project.model.service.UserServiceModel;
 import project.model.view.UserViewModel;
 import project.service.RoleService;
 import project.service.UserService;
 
-import javax.servlet.http.HttpSession;
-import java.util.Comparator;
 import java.util.List;
 
 @Controller

@@ -17,6 +17,7 @@ public class Book extends BaseEntity {
     private String isbn;    /*International Standard Book Number (ISBN)*/
     private String pathToImage;
     private Author author;
+    private User user;
 
     public Book() {
     }
@@ -84,13 +85,21 @@ public class Book extends BaseEntity {
         this.pathToImage = pathToImage;
     }
 
-    @ManyToOne(cascade = ALL, fetch = EAGER)
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    @ManyToOne
     public Author getAuthor() {
         return author;
     }
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    @ManyToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

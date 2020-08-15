@@ -1,18 +1,17 @@
 package project.model.service;
 
 import org.springframework.web.multipart.MultipartFile;
-
-import java.time.LocalDate;
+import project.model.enums.GenreName;
 
 public class BookServiceModel extends BaseServiceModel {
     private String bookTitle;
-    private String genre;
+    private GenreName genre;
     private Integer pageCount;
     private String summary;
-    private LocalDate issueDate;
+    private String issueDate;
     private String isbn;    /*International Standard Book Number (ISBN)*/
     private MultipartFile image;
-    private AuthorServiceModel author;
+    private String author;
 
     public BookServiceModel() {
     }
@@ -25,11 +24,11 @@ public class BookServiceModel extends BaseServiceModel {
         this.bookTitle = bookTitle;
     }
 
-    public String getGenre() {
+    public GenreName getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(GenreName genre) {
         this.genre = genre;
     }
 
@@ -49,11 +48,11 @@ public class BookServiceModel extends BaseServiceModel {
         this.summary = summary;
     }
 
-    public LocalDate getIssueDate() {
+    public String getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(LocalDate issueDate) {
+    public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
 
@@ -73,11 +72,11 @@ public class BookServiceModel extends BaseServiceModel {
         this.image = image;
     }
 
-    public AuthorServiceModel getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(AuthorServiceModel author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 }

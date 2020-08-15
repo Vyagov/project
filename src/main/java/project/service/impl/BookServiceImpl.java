@@ -6,14 +6,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import project.model.entity.Author;
 import project.model.entity.Book;
+import project.model.entity.User;
 import project.model.service.BookServiceModel;
+import project.model.service.UserServiceModel;
 import project.model.view.BookViewModel;
 import project.repository.BookRepository;
 import project.service.AuthorService;
 import project.service.BookService;
 import project.service.CloudinaryService;
+import project.service.UserService;
 
 import java.io.IOException;
+import java.security.Principal;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -22,23 +29,33 @@ public class BookServiceImpl implements BookService {
     private final AuthorService authorService;
     private final ModelMapper modelMapper;
     private final CloudinaryService cloudinaryService;
+    private final UserService userService;
 
     @Autowired
     public BookServiceImpl(BookRepository bookRepository,
                            AuthorService authorService,
                            ModelMapper modelMapper,
-                           CloudinaryService cloudinaryService) {
+                           CloudinaryService cloudinaryService,
+                           UserService userService) {
         this.bookRepository = bookRepository;
         this.authorService = authorService;
         this.modelMapper = modelMapper;
         this.cloudinaryService = cloudinaryService;
+        this.userService = userService;
     }
 
     @Override
-    public void addBook(BookServiceModel bookServiceModel) throws IOException {
+    public void addBook(BookServiceModel bookServiceModel, Principal principal) throws IOException {
         Book book = this.modelMapper.map(bookServiceModel, Book.class);
-        Author author = this.authorService.findByName(bookServiceModel.getAuthor().getName());
+
+        Author author = this.authorService.findByName(bookServiceModel.getAuthor());
         book.setAuthor(author);
+
+        UserServiceModel userServiceModel = this.userService.findUserByUsername(principal.getName());
+        book.setUser(this.modelMapper.map(userServiceModel, User.class));
+
+        LocalDate date = LocalDate.parse(bookServiceModel.getIssueDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        book.setIssueDate(date);
 
         MultipartFile image = bookServiceModel.getImage();
 
@@ -48,11 +65,13 @@ public class BookServiceImpl implements BookService {
         } else {
             book.setPathToImage("/img/empty-book.jpg");
         }
+
+        System.out.println();
         this.bookRepository.saveAndFlush(book);
     }
 
     @Override
-    public List<BookViewModel> findAllProducts() {
+    public List<BookViewModel> findAllBooks() {
         return null;
     }
 

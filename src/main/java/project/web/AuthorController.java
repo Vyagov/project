@@ -39,6 +39,7 @@ public class AuthorController {
         return "author/add-author";
     }
 
+    @Title(name = "Add Author")
     @PreAuthorize("hasAnyAuthority('ADMIN', 'MAIN_ADMIN', 'USER')")
     @PostMapping("/add")
     public String addConfirm(@Valid @ModelAttribute("authorBindingModel")

@@ -22,7 +22,7 @@ public class BookBindingModel {
     public BookBindingModel() {
     }
 
-    @NotBlank
+    @NotBlank(message = "Not be empty!")
     @Length(min = 2, max = 200, message = "The title length must be between 2 and 200 characters! ")
     @Pattern(regexp = "^[a-zA-Z0-9-\\s+,.!'\"_\\p{IsCyrillic}]+$", message = "Is not a text!")
     public String getBookTitle() {
@@ -43,7 +43,7 @@ public class BookBindingModel {
         this.genre = genre;
     }
 
-    @NotNull
+    @NotNull(message = "Not be empty!")
     @Digits(integer = 5, fraction = 0, message = "Length of value is not in range! ")
     @Min(value = 1, message = "The page count is not correct! ")
     @Max(value = 20000, message = "The number of pages is too large!")
@@ -55,7 +55,7 @@ public class BookBindingModel {
         this.pageCount = pageCount;
     }
 
-    @NotBlank
+    @NotBlank(message = "Not be empty!")
     @Length(min = 10, message = "Summary length must be more than 10 characters! ")
     @Pattern(regexp = "^[a-zA-Z0-9-\\s+,.!\"_\\p{IsCyrillic}]+$", message = "Is not a text!")
     public String getSummary() {
@@ -66,8 +66,7 @@ public class BookBindingModel {
         this.summary = summary;
     }
 
-    @Past(message = "Date can not be in the future! ")
-    @NotNull(message = "Select date!")
+    @NotNull(message = "Date can not be in the future!")
     public String getIssueDate() {
         return issueDate;
     }
@@ -77,7 +76,7 @@ public class BookBindingModel {
     }
 
     @ISBN(message = "Enter valid a 13-digit ISBN code!")
-    @NotNull
+    @NotNull(message = "Not be empty!")
     public String getIsbn() {
         return isbn;
     }
@@ -95,6 +94,7 @@ public class BookBindingModel {
         this.image = image;
     }
 
+    @NotBlank(message = "Select an author!")
     @NotNull(message = "Select an author!")
     public String getAuthor() {
         return author;

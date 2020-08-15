@@ -4,12 +4,13 @@ import project.model.service.BookServiceModel;
 import project.model.view.BookViewModel;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 public interface BookService {
-    void addBook(BookServiceModel bookServiceModel) throws IOException;
+    void addBook(BookServiceModel bookServiceModel, Principal principal) throws IOException;
 
-    List<BookViewModel> findAllProducts();
+    List<BookViewModel> findAllBooks();
 
     BookViewModel findById(String id);
 
