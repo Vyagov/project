@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.annotation.Title;
 import project.error.*;
-import project.init.Tools;
 import project.model.binding.UserRegisterBindingModel;
 import project.model.service.UserServiceModel;
 import project.service.UserService;
@@ -25,12 +24,9 @@ public class UsersController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
-    private final Tools tools;
 
     @Autowired
-    public UsersController(UserService userService, ModelMapper modelMapper,
-                           Tools tools) {
-        this.tools = tools;
+    public UsersController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
     }

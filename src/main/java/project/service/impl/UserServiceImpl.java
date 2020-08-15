@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.error.*;
-import project.init.Tools;
 import project.model.binding.UserRegisterBindingModel;
 import project.model.entity.Role;
 import project.model.entity.User;
@@ -17,6 +16,7 @@ import project.model.view.UserViewModel;
 import project.repository.UserRepository;
 import project.service.UserService;
 
+import java.security.Principal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -25,17 +25,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-    private final Tools tools;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository,
                            PasswordEncoder passwordEncoder,
-                           ModelMapper modelMapper,
-                           Tools tools) {
+                           ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-        this.tools = tools;
     }
 
     @Override
@@ -78,12 +75,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserServiceModel updateProfile(UserRegisterBindingModel userRegisterBindingModel) {
+    public UserServiceModel updateProfile(UserRegisterBindingModel userRegisterBindingModel, Principal principal) {
         UserServiceModel userServiceModel = this.findUserByUsername(userRegisterBindingModel.getUsername());
         if (!userServiceModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())) {
             throw new PasswordsNotMatchException("Password not match!");
         }
-        User user = this.getUserByUsername(this.tools.getLoggedUser());
+        User user = this.getUserByUsername(principal.getName());
         if (user != null) {
             user.setPassword(this.passwordEncoder.encode(userRegisterBindingModel.getPassword()));
             user.setFirstName(userRegisterBindingModel.getFirstName());

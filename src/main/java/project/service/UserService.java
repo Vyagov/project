@@ -6,13 +6,14 @@ import project.model.service.RoleServiceModel;
 import project.model.service.UserServiceModel;
 import project.model.view.UserViewModel;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
     UserServiceModel register(UserServiceModel userServiceModel);
 
-    UserServiceModel updateProfile(UserRegisterBindingModel userRegisterBindingModel);
+    UserServiceModel updateProfile(UserRegisterBindingModel userRegisterBindingModel, Principal principal);
 
     List<UserServiceModel> getAllUsers();
 
