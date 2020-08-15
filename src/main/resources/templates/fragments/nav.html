@@ -4,11 +4,12 @@
           xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <div class="row">
         <!-- Branding Image -->
-        <div class="col-2"><a th:href="@{/home}">
+        <div class="col-2">
+            <a th:href="@{/home}">
 
-            <img th:src="@{/img/logo.png}" alt="Logo" src="">
+                <img th:src="@{/img/logo.png}" alt="Logo" src="">
 
-        </a>
+            </a>
         </div>
         <div class="col-3 text">My Online Library</div>
         <div class="col-7 text">
@@ -49,12 +50,12 @@
                             Add book
 
                         </a>
-                        <a th:href="@{/myBooks}" class="btn btn-large btn-primary dropdown-item">
+                        <a href="#" class="btn btn-large btn-primary dropdown-item">
 
                             My books
 
                         </a>
-                        <a th:href="@{/allBooks}" class="btn btn-large btn-primary dropdown-item">
+                        <a href="#" class="btn btn-large btn-primary dropdown-item">
 
                             All books
 

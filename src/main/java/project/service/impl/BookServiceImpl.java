@@ -18,10 +18,10 @@ import project.service.UserService;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -65,23 +65,43 @@ public class BookServiceImpl implements BookService {
         } else {
             book.setPathToImage("/img/empty-book.jpg");
         }
-
-        System.out.println();
         this.bookRepository.saveAndFlush(book);
     }
 
     @Override
-    public List<BookViewModel> findAllBooks() {
-        return null;
+    public List<BookServiceModel> findAllBooks() {
+        return this.bookRepository.findAll()
+                .stream()
+                .map(this::mapToService)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BookViewModel> getAllBooks() {
+        return this.bookRepository.findAll()
+                .stream()
+                .map(book -> this.modelMapper.map(book, BookViewModel.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public BookViewModel findById(String id) {
-        return null;
+        return this.bookRepository
+                .findById(id)
+                .map(this::mapToView)
+                .orElse(null);
     }
 
     @Override
     public void delete(String id) {
 
+    }
+
+    private BookServiceModel mapToService(Book book) {
+        return this.modelMapper.map(book, BookServiceModel.class);
+    }
+
+    private BookViewModel mapToView(Book book) {
+        return this.modelMapper.map(book, BookViewModel.class);
     }
 }

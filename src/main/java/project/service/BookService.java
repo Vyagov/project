@@ -10,7 +10,9 @@ import java.util.List;
 public interface BookService {
     void addBook(BookServiceModel bookServiceModel, Principal principal) throws IOException;
 
-    List<BookViewModel> findAllBooks();
+    List<BookServiceModel> findAllBooks();
+
+    List<BookViewModel> getAllBooks();
 
     BookViewModel findById(String id);
 

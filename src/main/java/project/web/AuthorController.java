@@ -59,8 +59,8 @@ public class AuthorController {
 
     @Title(name = "Author Details")
     @PreAuthorize("hasAnyAuthority('ADMIN', 'MAIN_ADMIN', 'USER')")
-    @GetMapping("/details")
-    public ModelAndView details(@RequestParam("id") String id, ModelAndView modelAndView) {
+    @GetMapping("/details/{id}")
+    public ModelAndView details(@PathVariable("id") String id, ModelAndView modelAndView) {
         modelAndView.addObject("author", this.authorService.findById(id));
         modelAndView.setViewName("author/details-author");
 

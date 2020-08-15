@@ -6,12 +6,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.annotation.Title;
 import project.init.CustomFileValidator;
@@ -59,7 +55,7 @@ public class BookController {
     }
 
     @Title(name = "Add Book")
-    @PreAuthorize("hasAnyAuthority('MANAGER','ADMIN', 'USER')")
+    @PreAuthorize("hasAnyAuthority('MAIN_ADMIN','ADMIN', 'USER')")
     @PostMapping("/add")
     public String addConfirm(@Valid @ModelAttribute("bookBindingModel") BookBindingModel bookBindingModel,
                              Principal principal,
@@ -98,5 +94,14 @@ public class BookController {
         BookServiceModel bookServiceModel = this.modelMapper.map(bookBindingModel, BookServiceModel.class);
         this.bookService.addBook(bookServiceModel, principal);
         return "redirect:/home";
+    }
+
+    @Title(name = "Book Details")
+    @PreAuthorize("hasAnyAuthority('MAIN_ADMIN','ADMIN', 'USER')")
+    @GetMapping("/details/{id}")
+    public ModelAndView details(@PathVariable("id") String id, ModelAndView modelAndView) {
+        modelAndView.addObject("book", this.bookService.findById(id));
+        modelAndView.setViewName("book/details-book");
+        return modelAndView;
     }
 }

@@ -10,10 +10,10 @@ public class BookViewModel extends BaseViewModel {
     private String genre;
     private Integer pageCount;
     private String summary;
-    private LocalDate issueDate;
+    private String issueDate;
     private String isbn;    /*International Standard Book Number (ISBN)*/
-    private MultipartFile image;
-    private AuthorServiceModel author;
+    private String image;
+    private AuthorViewModel author;
 
     public BookViewModel() {
     }
@@ -50,11 +50,11 @@ public class BookViewModel extends BaseViewModel {
         this.summary = summary;
     }
 
-    public LocalDate getIssueDate() {
+    public String getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(LocalDate issueDate) {
+    public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
 
@@ -66,19 +66,19 @@ public class BookViewModel extends BaseViewModel {
         this.isbn = isbn;
     }
 
-    public MultipartFile getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(MultipartFile image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public AuthorServiceModel getAuthor() {
+    public AuthorViewModel getAuthor() {
         return author;
     }
 
-    public void setAuthor(AuthorServiceModel author) {
+    public void setAuthor(AuthorViewModel author) {
         this.author = author;
     }
 }
